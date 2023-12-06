@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hallo!</h1>
+    <div class="container">
+        <form action="/predict" method="POST">
+            <div class="dataInput">
+                <p>
+                    Age: 
+                    <input class="input" type="number" name="Age" id="Age">
+                </p>
+            </div>
+            <div class="dataInput">
+                <p>
+                    Job Level: 
+                    <input class="input" type="number" name="job_level" id="job_level">
+                </p>
+            </div>
+            <div class="dataInput">
+                <p>
+                    Marital Status: 
+                    <input class="input" type="number" name="marital_status" id="marital_status">
+                </p>
+            </div>
+            <div class="dataInput">
+                <p>
+                    Monthly Income: 
+                    <input class="input" type="number" name="monthly_income" id="monthly_income">
+                </p>
+            </div>
+            <div class="dataInput">
+                <p>
+                    Overtime: 
+                    <input class="input" type="number" name="overtime" id="overtime">
+                </p>
+            </div>
+            <div class="dataInput">
+                <p>
+                    Total Working Years: 
+                    <input class="input" type="number" name="total_working_years" id="total_working_years">
+                </p>
+            </div>
+            <div class="dataInput">
+                <p>
+                    Years in Current Role: 
+                    <input class="input" type="number" name="years_in_Current_Role" id="years_in_Current_Role">
+                </p>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    {{ prediction_text }}
+
+</body>
+</html>
