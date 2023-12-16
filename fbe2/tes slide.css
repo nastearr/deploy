@@ -1,0 +1,252 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: #fff;
+    font-family: sans-serif;
+
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 32px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.navbar a {
+    position: relative;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 40px;
+}
+
+.navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: .3s;
+}
+
+.navbar a:hover::before {
+    width: 100%;
+
+}
+
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 120px auto;
+    padding: 5px;
+    flex: wrap;
+
+}
+
+.kotakkiri {
+    flex: 50%;
+
+}
+
+.kotakkiri h2 {
+    margin-left: 18px;
+}
+
+.kotakkanan {
+    flex: 50%;
+
+}
+
+
+/* Slider ke 1 */
+.range {
+    height: 80px;
+    width: 500px;
+   
+    border-radius: 10px;
+    padding: 0 65px 0 45px;
+
+}
+
+.sliderValue {
+    position: relative;
+    width: 100%;
+}
+
+.sliderValue span {
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    transform: translateX(-70%) scale(0);
+    font-weight: 500;
+    top: -40px;
+    left: 200px;
+    line-height: 55px;
+    text-align: center;
+    z-index: 2;
+    color: #fff;
+    transform-origin: bottom;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sliderValue span.show {
+    transform: translateX(-70%) scale(1);
+}
+
+.sliderValue span:after {
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 100%;
+    background: #664AFF;
+    border: 3px solid #fff;
+    z-index: -1;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    border-bottom-left-radius: 50%;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    position: relative;
+}
+
+.field .value {
+    position: absolute;
+    font-size: 18px;
+    color: #664AFF;
+    font-weight: 600;
+}
+
+.field .value.left {
+    left: -22px;
+}
+
+.field .value.right {
+    right: -43px;
+}
+
+.range input {
+    appearance: none;
+    width: 100%;
+    height: 3px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    z-index: 2222;
+}
+
+.range input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+    background: #664AFF;
+    border: 1px solid #664AFF;
+    cursor: pointer;
+}
+
+.range input::-moz-range-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+    background: #664AFF;
+    border: 1px solid #664AFF;
+    cursor: pointer;
+}
+
+.range input::-moz-range-progress {
+    background: #664AFF;
+    /* //this progress background is only shown on Firefox */
+}
+
+/* button */
+
+.btn {
+    margin: 0px;
+    justify-content: center;
+    padding: 0;
+    bottom: -15px;
+    margin-left: -15px;
+
+}
+
+.animasi {
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+}
+
+.tombol-aktif {
+    padding: 8px 185px;
+    border-radius: 7px;
+    float: left;
+    font-family: 'Pacifico', cursive;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.biru {
+    background-color: #393E6F;
+    border-bottom: 5px solid #181d4e;
+    text-shadow: 0px -2px #181d4e;
+}
+
+.tombol-aktif:active {
+    transform: translate(100px, 52px);
+    -webkit-transform: translate(0px, 5px);
+    border-bottom: 1px solid;
+}
+
+/* Kotak Kanan */
+
+.textkn {
+    margin-top: 100px;
+    margin-left: 180px;
+}
+
+/* gambar */
+
+.img1 {
+    margin: 0px auto;
+    justify-content: center;
+}
+
+.gambar {
+    margin-left: 70px;
+    width: 500px;
+}

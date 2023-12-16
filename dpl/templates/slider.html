@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="aplikasi" data-bs-spy="scroll" data-bs-target="#navgo" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+        <br><br>
+
+        <div class="row"></div>
+        <div class="col-sm-6"></div>
+            </br>
+            
+            <!-- input nilai pengukuran -->
+            <h3 style="margin-left: 50px;">Nilai Pengukuran</h3>
+
+            <form>
+                <div class="form-group" style="margin-left: 50px;">
+
+                    <!-- input slide Age -->
+                    <label for="range_age">Age</label>&nbsp;&rarr;&nbsp;
+                    <span id="rangeVal_age">50 <!-- Default Value --> </span>
+                    <input type="range" min="0" max="1" step="1" value="0" class="slider" id="range_age" oninput="$('#rangeVal_age').html($(this).val())">
+
+                    <!-- input slide Job Level -->
+                    <label for="range_job_level">Job Level</label>&nbsp;&rarr;&nbsp;
+                    <span id="rangeVal_job_level"> <!-- Default Value --> </span>
+                    <input type="range" min="0" max="3" step="1" value="1" class="slider" id="range_job_level"  oninput="$('#rangeVal_job_level').html($(this).val())">
+
+                    <!-- input slide Marital Status -->
+                    <label for="range_marital_status">Marital Status</label>&nbsp;&rarr;&nbsp;
+                    <span id="rangeVal_marital_status">50 <!-- Default Value --> </span>
+                    <input type="range" min="0" max="3" step="0" value="0" class="slider" id="range_marital_status"  oninput="$('#rangeVal_marital_status').html($(this).val())">
+
+                    <!-- input slide Monthly Income -->
+                    <label for="range_monthly_income">Monthly Income</label>&nbsp;&rarr;&nbsp;
+                    <span id="rangeVal_monthly_income"> <!-- Default Value --> </span>
+                    <input type="range" min="0" max="100" step="1" value="0" class="slider" id="range_monthly_income"  oninput="$('#rangeVal_monthly_income').html($(this).val())">
+
+                    <!-- input slide OverTime -->
+                    <label for="range_overtime">OverTime</label>&nbsp;&rarr;&nbsp;
+                    <span id="rangeVal_overtime"> <!-- Default Value --> </span>
+                    <input type="range" min="0" max="100" step="1" value="0" class="slider" id="range_overtime"  oninput="$('#rangeVal_overtime').html($(this).val())">
+
+                    <!-- input slide Total Working Years -->
+                    <label for="range_total_working_years"> Total Working Years</label>&nbsp;&rarr;&nbsp;
+                    <span id="rangeVal_total_working_years">50 <!-- Default Value --> </span>
+                    <input type="range" min="0" max="100" step="1" value="50" class="slider" id="range_total_working_years"  oninput="$('#rangeVal_total_working_years').html($(this).val())">
+
+                    <!-- input slide Years In Current Role -->
+                    <label for="range_years_in_current_role">Years In Current Role</label>&nbsp;&rarr;&nbsp;
+                    <span id="rangeVal__years_in_current_role">50 <!-- Default Value --> </span>
+                    <input type="range" min="0" max="100" step="1" value="50" class="slider" id="range_years_in_current_role"  oninput="$('#rangeVal_years_in_current_role').html($(this).val())">
+
+                    <!-- Tombol Prediksi -->
+                    <button type="submit" id="prediksi_submit" class="btn btn-default btn-lg">Prediksi</button>
+                </div>
+            </form>
+            <div class="col-sm-6">
+                <br>
+                <!-- Bagian Halaman Hasil Prediksi -->
+                <div id="hasil_prediksi" align="center"> {{ prediction_text }}
+                </div>
+
+            </div>
+
+    </div>
+
+    <script>
+        $("#prediksi_submit").click(function (e) {
+            e.preventDefault();
+
+            //set data pengukuran faktor efektivitas
+            var input_age = $("#range_age").val();
+            var input_job_level = $("#range_job_level").val();
+            var input_marital_status = $("#range_marital_status").val();
+            var input_monthly_income = $("#range_monthly_income").val();
+            var input_overtime = $("#range_overtime").val();
+            var input_total_working_years = $("#range_total_working_years").val();
+            var input_years_in_current_role = $("#range_years_in_current_role").val();
+
+            setTimeout(function () {
+                try {
+                    $.ajax({
+                        url: "/api/deteksi",
+                        type: "POST",
+                        data: {
+                            "age": input_age,
+                            "job_level": input_job_level,
+                            "marital_status": input_marital_status,
+                            "monthly_income": input_monthly_income,
+                            "overtime": input_overtime,
+                            "total_working_years": input_total_working_years,
+                            "years_in_current_role": input_years_in_current_role,
+
+                        },
+                        success:function(res) {
+                            //ambil hasil prediksi
+                            res_data_prediksi = ['prediksi']
+                            res_gambar_prediksi = res['gambar prediksi']
+
+                            //tampilkan hasil prediksi
+                            generate_prediksi(res_data_prediksi, res_gambar_prediksi);
+                        }
+
+
+                    });
+                }
+                catch (e) {
+                    //jika gagal memanggil API
+                    console.log("Gagal !");
+                    console.log(e);
+                }
+
+            }, 1000)
+
+        })
+
+        function generate_prediksi(data_prediksi, image_prediksi) {
+            var int = "";
+            int += "<h3>Hasil Prediksi</h3>";
+            int += "</br>";
+            // str += "<h3>Hasil Prediksi</h3>"; 
+            int += "<h3>" + data_prediksi + "</h3>";
+            $("#hasil_prediksi").html(int);
+        }
+    </script>
+    
+</body>
+
+
+
+</html>
+
