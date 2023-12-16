@@ -64,6 +64,7 @@
 
                 </div>
             </div>
+            <p id="hasil"></p>
 
         </div>
 
@@ -95,6 +96,17 @@
         inputSlider.oninput = (() => {
             let value = inputSlider.value;
             slideValue.textContent = value;
+
+            
+            if (value >= 50) {
+                document.getElementById("hasil").innerHTML = "Tinggi";
+            } else if (value >= 30) {
+                document.getElementById("hasil").innerHTML = "Sedang";
+            } else {
+                document.getElementById("hasil").innerHTML = "Rendah";
+            }
+            // output.innerHTML = " ";
+            // output.innerHTML += value;
             //   slideValue.style.left = (value/2);
 
             slideValue.classList.add("show");
@@ -103,20 +115,22 @@
             slideValue.classList.remove("show");
         });
 
-        slider.oninput = function () {
+        // slider.oninput = function () {
 
-            output.innerHTML = " ";
+        //     output.innerHTML = " ";
 
+        //     if (value >= 65) {
+        //         output.innerHTML += " (Tinggi)";
+        //         console.log(value);
+        //     } else if (value >= 35) {
+        //         output.innerHTML += " (Sedang)";
+        //         console.log(value);
+        //     } else {
+        //         output.innerHTML += " (Rendah)";
+        //         console.log(value);
+        //     }
 
-            if (value >= 65) {
-                output.innerHTML += " (Tinggi)";
-            } else if (value >= 35) {
-                output.innerHTML += " (Sedang)";
-            } else {
-                output.innerHTML += " (Rendah)";
-            }
-
-        }
+        // }
 
     </script>
 
