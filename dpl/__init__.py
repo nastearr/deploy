@@ -13,7 +13,7 @@ model = pickle.load(open('model_faktor_efektivitas_karyawan.pkl', 'rb'))
 
 @app.route('/')
 def index():
-    return render_template("slider.html")
+    return render_template("index.html")
 
 @app.route('/predict', methods = ['POST'])
 def predict():
@@ -22,7 +22,7 @@ def predict():
     prediction = model.predict(final_features)
     
     output = round(prediction[0], 2)
-    return render_template("slider.html", prediction_text='Ya/Tidak[1/0] :{}'.format(output))
+    return render_template("index.html", prediction_text='Ya/Tidak[1/0] :{}'.format(output))
     
     
 
